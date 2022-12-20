@@ -1,0 +1,21 @@
+#start {
+    background-color: blue;
+    color: white;
+    margin: 20px;
+  }
+
+#questionsList {
+    margin: 20px;
+}
+
+body {
+    position: absolute;
+    left: 30%;
+    top: 10%;
+    width: 500px;
+    height: 500px;
+}
+
+ul {
+    list-style: none;
+}

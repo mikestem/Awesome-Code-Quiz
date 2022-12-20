@@ -23,14 +23,14 @@ var questions = [
     },
     {
         title: "Which of the following in NOT a Primitive data type",
-        choices: ["string", "Nnumber", "boolean", "object"],
+        choices: ["string", "number", "boolean", "object"],
         answer: "object" 
     },
 
 ];
 
 var secondsLeft = 50;
-var holdInterval = 0;
+var holdInterval = 10;
 var penalty = 10;
 var ulCreate = document.createElement("ul");
 
@@ -66,3 +66,33 @@ function render(questionIndex) {
         listItem.addEventListener("click", (compare));
     })
 }
+
+function compare(event) {
+    var element = event.target;
+
+    if (element.matches("li")) {
+
+        var createDiv = document.createElement("div");
+        createDiv.setAttribute("id", "createDiv");
+        if (element.textContent == questions[questionIndex].answer) {
+            score++;
+            createDiv.textContent = "Correct! " + questions[questionIndex].answer;
+        } else {
+            secondsLeft = secondsLeft - penalty;
+            createDiv.textContent = "Nice Try! Correct answer is:  " + questions[questionIndex].answer;
+        }
+
+    }
+
+    questionIndex++;
+
+    if (questionIndex >= questions.length) {
+        allDone();
+        createDiv.textContent = "Finished!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
+    } else {
+        render(questionIndex);
+    }
+    questionsList.appendChild(createDiv);
+
+}
+
